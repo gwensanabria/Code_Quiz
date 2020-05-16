@@ -7,6 +7,9 @@
 // show high/low score
 // save to local storage
 
+
+// CHECK TO SEE IF I NEED CORRECT AND WRONG IN SOME PARTS. NOT USING COLOR
+
 const startBtn = document.getElementById("start-btn");
 const nextBtn = document.getElementById("next-btn");
 const questionContainerEl = document.getElementById("question-container");
@@ -16,6 +19,10 @@ const answerBtnEl = document.getElementById("answer-buttons");
 let randomQ, currentQIndex
 
 startBtn.addEventListener('click', startGame)
+nextBtn.addEventListener('click', () => {
+    currentQIndex++
+    setNextQ()
+})
 
 function startGame() {
     // console.log('Start')
@@ -53,11 +60,56 @@ function resetState() {
     }
 }
 
-function selectAnswer(event) {
+function selectAnswer(e) {
+    const selectedBtn = e.target
+    const correct = selectedBtn.dataset.correct
+    setStatusClass(document.body, correct)
+    Array.from(answerBtnEl.children).forEach(button => {
+        setStatusClass(button, button.dataset.correct)
+    })
+    if (randomQ.length > currentQIndex + 1) {
+        nextBtn.classList.remove('hide')
+    } else {
+        startBtn.innerText = 'Restart'
+        startBtn.classList.remove('hide')
+    }
+}
 
+function setStatusClass(element, correct) {
+    clearStatusClass(element)
+    if (correct) {
+        element.classList.add('correct')
+    } else {
+        element.classList.add('wrong')
+    }
+}
+
+function clearStatusClass(element) {
+    element.classList.remove('correct')
+    element.classList.remove('wrong')
 }
 
 const questions = [
+    {
+        question: 'What is 2 + 2',
+        answers: [
+            {text: '4', correct: true},
+            {text: '22', correct: false},
+            {text: '44', correct: false},
+            {text: '24', correct: false}
+        ]
+    },
+
+    {
+        question: 'What is 2 + 2',
+        answers: [
+            {text: '4', correct: true},
+            {text: '22', correct: false},
+            {text: '44', correct: false},
+            {text: '24', correct: false}
+        ]
+    },
+
     {
         question: 'What is 2 + 2',
         answers: [
