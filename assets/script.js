@@ -28,17 +28,39 @@ function startGame() {
 // console.log(startGame)
 
 function setNextQ() {
-
+    resetState()
+    showQ(randomQ[currentQIndex])
 }
 
-function selectAnswer() {
+function showQ(question) {
+    questionEl.innerText = question.question
+    question.answers.forEach(answer => {
+        const button = document.createElement('button')
+        button.innerText = answer.text
+        button.classList.add('btn')
+        if (answer.correct) {
+            button.dataset.correct = answer.correct
+        }
+        button.addEventListener('click', selectAnswer)
+        answerBtnEl.appendChild(button)
+    });
+}
+
+function resetState() {
+    nextBtn.classList.add('hide')
+    while (answerBtnEl.firstChild) {
+        answerBtnEl.removeChild(answerBtnEl.firstChild)
+    }
+}
+
+function selectAnswer(event) {
 
 }
 
 const questions = [
     {
         question: 'What is 2 + 2',
-        answer: [
+        answers: [
             {text: '4', correct: true},
             {text: '22', correct: false},
             {text: '44', correct: false},
