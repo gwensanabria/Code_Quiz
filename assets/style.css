@@ -1,3 +1,8 @@
+:root {
+    --hue-wrong: 0;
+    --hue-correct: 145;
+}
+
 header {
     display: flex;
     justify-content: flex-start;
@@ -80,14 +85,26 @@ section {
     margin: 20px 0;
 }
 
-.btn-grid {
-    /* border: 1px solid; */
+.btn {
+    border: 3px solid;
     background-color:white;
     border-radius: 5px;
     padding: 5px 10px;
     color: black;
-    /* outline: none; */
+    outline: none;
 }
+
+.btn.correct {
+    /* --hue: var(--hue-correct); */
+    color: black;
+    background-color: green;
+}
+
+.btn.wrong {
+    /* --hue: var(--hue-wrong); */
+    background-color: red;
+}
+
 
 .btn:hover {
     border-color: teal;
