@@ -28,7 +28,7 @@ nextBtn.addEventListener('click', () => {
 })
 // Start button, randomize question
 function startGame() {
-    c = 200
+    c = 150
     // console.log('Start')
     startBtn.classList.add('hide') // hides starts button when pressed
     randomQ = questions.sort(() => Math.random() - .5)
@@ -41,11 +41,15 @@ function startGame() {
 // Timer
 function timer001() {
     c = c - 1;
-    if (c < 200) {
+    if (c < 150) {
         time001.innerHTML = c;
     }
     if (c < 1) {
         window.clearInterval(update);
+        startBtn.innerText = 'Restart'
+        startBtn.classList.remove('hide')
+        timeUp.innerText = "Time's Up!"
+        timeUp.classList.remove('hide')
     }
 }
 
@@ -95,6 +99,8 @@ function selectAnswer(e) {
         c ='-';
         startBtn.innerText = 'Restart'
         startBtn.classList.remove('hide')
+        timeUp.innerText = "Finished!"
+        timeUp.classList.remove('hide')
     }
 }
 
