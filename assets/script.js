@@ -15,6 +15,9 @@ const nextBtn = document.getElementById("next-btn");
 const questionContainerEl = document.getElementById("question-container");
 const questionEl = document.getElementById("question");
 const answerBtnEl = document.getElementById("answer-buttons");
+const time001 = document.getElementById('time001');
+const timeUp = document.getElementById('time-up');
+
 
 let randomQ, currentQIndex
 
@@ -23,8 +26,9 @@ nextBtn.addEventListener('click', () => {
     currentQIndex++
     setNextQ()
 })
-
+// Start button, randomize question
 function startGame() {
+    c = 200
     // console.log('Start')
     startBtn.classList.add('hide') // hides starts button when pressed
     randomQ = questions.sort(() => Math.random() - .5)
@@ -33,6 +37,23 @@ function startGame() {
     setNextQ()
 }
 // console.log(startGame)
+
+// Timer
+function timer001() {
+    c = c - 1;
+    if (c < 200) {
+        time001.innerHTML = c;
+    }
+    if (c < 1) {
+        window.clearInterval(update);
+    }
+}
+
+update = setInterval('timer001()', 1000);
+
+
+
+
 
 function setNextQ() {
     resetState()
@@ -70,6 +91,8 @@ function selectAnswer(e) {
     if (randomQ.length > currentQIndex + 1) {
         nextBtn.classList.remove('hide')
     } else {
+        window.clearInterval(update);
+        c ='-';
         startBtn.innerText = 'Restart'
         startBtn.classList.remove('hide')
     }

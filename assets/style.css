@@ -4,6 +4,13 @@ header {
     align-items: flex-start;
 }
 
+.timer {
+    display: flex!important;
+    justify-content: flex-end!important;
+    align-items: flex-start!important;
+
+}
+
 body {
     background-color: blanchedalmond;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -17,6 +24,14 @@ body {
     align-items: center; */
 }
 
+/* .timer {
+    display: flex!important;
+    justify-content: flex-end!important;
+    align-items: flex-start!important;
+    color: teal;
+    font-size: 50px;
+} */
+
 section {
     display: flex;
     justify-content: center;
@@ -27,6 +42,12 @@ section {
     padding: 0;
     margin: 0;
 }
+
+/* .timer {
+    display: flex;
+    justify-content: flex-end!important;
+    align-items: flex-start!important;
+} */
 
 .container {
     width: 800px;
